@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 // Define the form schema using Zod
@@ -44,9 +44,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ className }) => {
   }
 
   return (
-    <Card className={cn("w-full max-w-sm bg-card shadow-md", className)}>
-      <CardHeader>
-        <h1 className="text-3xl font-bold text-center text-card-foreground">Welcome</h1>
+    <Card className={cn("w-full max-w-sm bg-card shadow-lg", className)}>
+      <CardHeader className="text-center">
+        <h1 className="text-3xl font-bold text-card-foreground">Welcome back</h1>
+        <CardDescription>Enter your credentials to access your account.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -57,12 +58,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ className }) => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-secondary-foreground">Email Address</FormLabel>
+                    <FormLabel className="text-sm font-medium">Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
+                        placeholder="name@example.com"
                         {...field}
-                        className="bg-transparent border-0 border-b border-input rounded-none px-1 py-2 h-auto shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:border-primary placeholder:text-muted-foreground"
                       />
                     </FormControl>
                     <FormMessage />
@@ -74,12 +75,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ className }) => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-secondary-foreground">Password</FormLabel>
+                    <FormLabel className="text-sm font-medium">Password</FormLabel>
                     <FormControl>
                       <Input
                         type="password"
+                        placeholder="••••••••"
                         {...field}
-                        className="bg-transparent border-0 border-b border-input rounded-none px-1 py-2 h-auto shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:border-primary placeholder:text-muted-foreground"
                       />
                     </FormControl>
                     <FormMessage />
@@ -88,13 +89,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ className }) => {
               />
             </div>
 
-            <div className="text-left -mt-2">
+            <div className="text-right -mt-2">
                 <Button variant="link" asChild className="p-0 h-auto text-sm font-normal text-secondary-foreground hover:text-primary">
-                    <Link to="/forgot-password">Forgot Password</Link>
+                    <Link to="/forgot-password">Forgot Password?</Link>
                 </Button>
             </div>
             
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 rounded-lg">
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3">
               Login
             </Button>
           </form>
@@ -104,7 +105,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ className }) => {
         <p className="text-sm text-secondary-foreground">
           Don't have an account?{' '}
           <Button variant="link" asChild className="p-0 h-auto font-semibold text-primary hover:underline">
-            <Link to="/signup">SignUp</Link>
+            <Link to="/signup">Sign Up</Link>
           </Button>
         </p>
       </CardFooter>
